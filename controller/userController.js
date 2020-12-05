@@ -10,6 +10,7 @@ const users = require('../models/userModel')
 //  return await bcrypt.compare(plainPassword, hashedPassword);
 // }
 exports.authenticate = async function(username, password) {
+  try {
     var user = users.get(username);
     if (user.password === password) {
       user.password = 'XXXXX';
@@ -17,6 +18,9 @@ exports.authenticate = async function(username, password) {
     } else {
       return false;
     }
+  } catch (error) {
+   next(error)
+  }
 }
 
 exports.grantAccess = function(action, resource) {
