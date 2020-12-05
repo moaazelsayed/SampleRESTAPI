@@ -9,17 +9,19 @@ const users = require('../models/userModel')
 // async function validatePassword(plainPassword, hashedPassword) {
 //  return await bcrypt.compare(plainPassword, hashedPassword);
 // }
-exports.authenticate = async function(username, password) {
-  try {
-    var user = users.get(username);
-    if (user.password === password) {
-      user.password = 'XXXXX';
-      return user;
-    } else {
-      return false;
+exports.authenticate = function(username, password) {
+  return async (req, res, next) => {
+    try {
+      var user = users.get(username);
+      if (user.password === password) {
+        user.password = 'XXXXX';
+        return user;
+      } else {
+        return false;
+      }
+    } catch (error) {
+     next(error)
     }
-  } catch (error) {
-   next(error)
   }
 }
 
