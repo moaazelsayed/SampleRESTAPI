@@ -26,6 +26,8 @@ books.set(id, {
 	updated: getTimeFormatted(Date.now())
 });
 
+console.log(books)
+
 exports.updateTitle = function(id, title) {
 	var book = books.get(id);
 	books.set(id, {
@@ -64,11 +66,7 @@ exports.getBook = function(id) {
 };
 
 exports.getAllBooks = function() {
-	var allBooks = []
-	for (let [key, value] of books) {
-	  allBooks[key] = value;
-	}
-	return allBooks;
+	return books;
 };
 
 exports.deleteBook = function(id) {
