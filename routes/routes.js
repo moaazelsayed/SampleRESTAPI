@@ -17,8 +17,8 @@ module.exports = router;
 
 function getAllBooks(req, res, next) {
     try {
-        console.log("getting books")
-        res.json(books.getAllBooks())
+        console.log(books.getAllBooks())
+        res.send(books.getAllBooks())
     } catch (err) {
         next(err)
     }
@@ -26,7 +26,7 @@ function getAllBooks(req, res, next) {
 
 function getBook(req, res, next) {
     try {
-        res.json(books.getBook(req.params.bookId))
+        res.send(books.getBook(req.params.bookId))
     } catch (err) {
         next(err)
     }
@@ -34,7 +34,7 @@ function getBook(req, res, next) {
 
 function addBook(req, res, next) {
     try {
-        res.json(books.addBook(req.body.title, req.body.description))
+        res.send(books.addBook(req.body.title, req.body.description))
     } catch (err) {
         next(err)
     }
@@ -42,7 +42,7 @@ function addBook(req, res, next) {
 
 function updateBookTitle(req, res, next) {
     try {
-        res.json(books.addBook(req.body.title))
+        res.send(books.addBook(req.body.title))
     } catch (err) {
         next(err)
     }
@@ -50,7 +50,7 @@ function updateBookTitle(req, res, next) {
 
 function updateBookDescription(req, res, next) {
     try {
-        res.json(books.addBook(req.body.description))
+        res.send(books.addBook(req.body.description))
     } catch (err) {
         next(err)
     }
@@ -58,7 +58,7 @@ function updateBookDescription(req, res, next) {
 
 function deleteBook(req, res, next) {
     try {
-        res.json(books.addBook(req.params.bookId))
+        res.send(books.addBook(req.params.bookId))
     } catch (err) {
         next(err)
     }

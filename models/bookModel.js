@@ -26,7 +26,7 @@ books.set(id, {
 	updated: getTimeFormatted(Date.now())
 });
 
-console.log(books)
+
 
 exports.updateTitle = function(id, title) {
 	var book = books.get(id);
