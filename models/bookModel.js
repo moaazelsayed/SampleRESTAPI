@@ -29,7 +29,7 @@ books.set(id, {
 exports.updateTitle = function(id, title) {
 	var book = books.get(id);
 	books.set(id, {
-		title,
+		title: title,
 		description: book.description,
 		added: book.added,
 		updated: getTimeFormatted(Date.now())
@@ -41,7 +41,7 @@ exports.updateDescription = function(id, description) {
 	var book = books.get(id);
 	books.set(id, {
 		title: book.title,
-		description,
+		description: description,
 		added: book.added,
 		updated: getTimeFormatted(Date.now())
 	})
@@ -51,8 +51,8 @@ exports.updateDescription = function(id, description) {
 exports.addBook = function(title, description) {
 	var id = crypto.randomBytes(8).toString("hex");
 	books.set(id, {
-		title,
-		description,
+		title: title,
+		description: description,
 		added: getTimeFormatted(Date.now()),
 		updated: getTimeFormatted(Date.now())
 	})
