@@ -1,10 +1,8 @@
-var path = require("path");
 var express = require('express');
 var router = express.Router();
 var userController = require('../controller/userController');
 var user = require('../models/userModel');
 var books = require('../models/bookModel');
-
 
 router.get('/getAllBooks', userController.grantAccess('readAny', 'book'), getAllBooks);
 router.get('/getBook/:bookId', userController.grantAccess('readAny', 'book'), getBook);

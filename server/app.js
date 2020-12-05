@@ -4,7 +4,7 @@ var port = process.env.PORT || 3000;
 var app = express();
 var path = require('path')
 var cors = require('cors');
-var routes = './routes/routes';
+var routes = require('../routes/routes');
 var basicAuth = require('../auth/auth');
 var errorHandler = require('../helpers/errorHandler');
 
@@ -14,8 +14,8 @@ app.use(cors());
 
 // Custom Middleware
 app.use(basicAuth);
-app.use(errorHandler);
 app.use(routes); 
+app.use(errorHandler);
 
 // Server listen on port 3000
 app.listen(port, function(){

@@ -1,6 +1,6 @@
 var books = new Map()
 var crypto = require("crypto");
-var { getDateFormated, getTimeFormatted, timeZones } = require('../config/tools');
+var { getDateFormated, getTimeFormatted, timeZones } = require('../helpers/tools');
 var id = crypto.randomBytes(8).toString("hex");
 books.set(id, { 
 	title: 'Harry Potter', 
