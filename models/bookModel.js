@@ -1,6 +1,7 @@
 var books = new Map()
 var crypto = require("crypto");
 var { getDateFormated, getTimeFormatted, timeZones } = require('../helpers/tools');
+
 var id = crypto.randomBytes(8).toString("hex");
 books.set(id, { 
 	title: 'Harry Potter', 
@@ -63,7 +64,11 @@ exports.getBook = function(id) {
 };
 
 exports.getAllBooks = function() {
-	return books;
+	var allBooks = []
+	for (let [key, value] of books) {
+	  allBooks[key] = value;
+	}
+	return allBooks;
 };
 
 exports.deleteBook = function(id) {

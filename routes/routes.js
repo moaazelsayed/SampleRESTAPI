@@ -16,37 +16,50 @@ router.delete('/deleteBook/:bookId', userController.grantAccess('deleteAny', 'bo
 module.exports = router;
 
 function getAllBooks(req, res, next) {
-    books.getAllBooks()
-        .then(books => res.json(books))
-        .catch(err => next(err));
+    try {
+        console.log("getting books")
+        res.json(books.getAllBooks())
+    } catch (err) {
+        next(err)
+    }
 }
 
 function getBook(req, res, next) {
-    books.getBook(req.params.bookId)
-        .then(book => res.json(book))
-        .catch(err => next(err));
+    try {
+        res.json(books.getBook(req.params.bookId))
+    } catch (err) {
+        next(err)
+    }
 }
 
 function addBook(req, res, next) {
-    books.addBook(req.body.title, req.body.description)
-        .then(book => res.json(book))
-        .catch(err => next(err));
+    try {
+        res.json(books.addBook(req.body.title, req.body.description))
+    } catch (err) {
+        next(err)
+    }
 }
 
 function updateBookTitle(req, res, next) {
-    books.addBook(req.body.title)
-        .then(book => res.json(book))
-        .catch(err => next(err));
+    try {
+        res.json(books.addBook(req.body.title))
+    } catch (err) {
+        next(err)
+    }
 }
 
 function updateBookDescription(req, res, next) {
-    books.addBook(req.body.description)
-        .then(book => res.json(book))
-        .catch(err => next(err));
+    try {
+        res.json(books.addBook(req.body.description))
+    } catch (err) {
+        next(err)
+    }
 }
 
 function deleteBook(req, res, next) {
-    books.addBook(req.params.bookId)
-        .then(res => res.json({ message: res }))
-        .catch(err => next(err));
+    try {
+        res.json(books.addBook(req.params.bookId))
+    } catch (err) {
+        next(err)
+    }
 }
